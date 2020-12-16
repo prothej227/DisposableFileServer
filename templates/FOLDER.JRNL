@@ -1,0 +1,75 @@
+{% extends 'LAYOUT.JRNL' %}
+{% block body %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><i class="fa fa-trash" aria-hidden="true"></i> DisposableFileServer | Beta</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="/">File Manager <span class="sr-only">(current)</span></a></li>
+            <li><a style="color:red" href="#">Analytics (Not Available)</a></li>
+            <li><a style="color:red" href="#">Export (Not Available)</a></li>
+			<li><a href="https://github.com/prothej227">Follow me @ GitHub</a></li>
+          </ul>
+          
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <div class="row placeholders">
+          </div>
+
+          <h2 class="diplay-4"><a href="/root">root</a> <small>/{{path}}</small></h2>
+		  <hr>
+          <small style="margin-top: 0px;"><i class="fa fa-bell" aria-hidden="true"></i> Below is the list of files contained in the shared folder.</small>
+		  <br>
+		  <small style="margin-top: 0px;"><i class="fa fa-trash" aria-hidden="true"></i> Server expires after: 8 hrs</small>
+		  <br>
+		  <small style="margin-top: 0px;"><i class="fa fa-list-ol" aria-hidden="true"></i> Count: {{ file_list|length }}</small>		  
+          <hr>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>FILE</th>
+				  <th><center>DATE MODIFIED</th>
+				  <th><center>TYPE</th>
+				  <th><center>SIZE</th>
+                  <th><center>ACTION</th>                  
+                </tr>
+              </thead>
+              <tbody>
+				{% for i in range(file_list|length) %}
+                <tr>
+					{% if ext[i] != "FOLDER" %}
+					<td><i class="fa fa-file" aria-hidden="true" style="margin-right:10px"></i>{{ file_names[i] }}</td>
+					<td><center>{{ mod_time[i] }}</center></td>
+					<td><center>{{ ext[i] }}</center></td>
+					<td><center>{{ sizes[i] }}</td>
+					<td><center><button onclick="location.href='/xget&path={{ path }}&fname={{ file_list[i] }}'" class="btn btn-success" type="submit"><i class="fa fa-download" aria-hidden="true"></i> XGET</button></td>
+					{% else %}
+					<td><i class="fa fa-folder" aria-hidden="true" style="margin-right:10px"></i><a href="/{{ path }}/{{ file_names[i] }}">{{ file_names[i] }}</a></td>
+					<td><center>{{ mod_time[i] }}</center></td>
+					<td><center>{{ ext[i] }}</center></td>
+					<td><center>-</td>
+					<td><center><button onclick="location.href='/{{ path }}/{{ file_names[i] }}'" class="btn btn-primary" type="submit"><i class="fa fa-folder-open-o" aria-hidden="true"></i> OPEN</button></td>
+					{% endif %}
+				</tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

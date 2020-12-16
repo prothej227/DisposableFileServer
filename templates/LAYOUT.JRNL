@@ -1,0 +1,38 @@
+<html>
+<head>
+	<link href="/static/elements/ico/favicon.ico" rel="icon" type="image/x-icon" />
+	<link rel="stylesheet" href="/static/elements/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/elements/css/dashboard.css">
+	<link rel="stylesheet" href="/static/elements/fa/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DisposableFileServer | Beta</title>
+<!-- 	<style>
+		table, th, td {
+		  border: 1px solid black;
+		}
+		body {
+		  margin-left:60px;
+		  margin-right:60px;
+		}
+	</style> -->
+</head>
+</body>
+        {% block body %} {% endblock %}
+
+<!--- Scripts --->
+<script src="/static/elements/js/jquery.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="/static/elements/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright
+    <a href="https://github.com/prothej227"> Journel Cabrillos</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</body>
+</html>
