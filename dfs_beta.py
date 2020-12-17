@@ -10,7 +10,7 @@ from flask_ngrok import run_with_ngrok as ngrok
 
 root_fol = "/static/shared"
 app = Flask(__name__)
-#ngrok(app)
+ngrok(app)
 
 def scanFiles(mypath):
     file_li = [f for f in listdir(mypath) if isfile(join(mypath, f))]
@@ -75,6 +75,6 @@ def downloadFile(path, fname):
     return send_file(os.getcwd() + root_fol + "/" + str(path) + "/" + fname, as_attachment=True)
     
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=9999)
-    #app.run()
+    #app.run(debug=True, host="0.0.0.0", port=9999)
+    app.run()
  
